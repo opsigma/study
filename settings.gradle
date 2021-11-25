@@ -22,6 +22,6 @@ buildCache {
 }
 
 rootProject.name = 'Study'
-
+include 'spring-01', 'spring-01:spring-01-exercise', 'spring-01:spring-01-solution'
 
 
