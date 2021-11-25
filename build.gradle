@@ -1,0 +1,14 @@
+plugins {
+    id 'base'
+    id 'org.springframework.boot' version '2.6.0' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
+}
+
+
+wrapper{
+    gradleVersion='7.3'
+}
+
+
+
+
