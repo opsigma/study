@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="questionDaoCsv" class="ru.otus.homework.dao.QuestionDaoCsv">
+        <constructor-arg name="delimiter" value=";"/>
+        <constructor-arg name="path" value="/quiz/question.csv"/>
+        <constructor-arg name="resourceDaoFile" ref="resourceDaoFile"/>
+    </bean>
+    <bean id="resourceDaoFile" class=" ru.otus.homework.dao.resource.ResourceDaoFile">
+    </bean>
+
+    <bean id="questionServiceCsv" class="ru.otus.homework.service.QuestionServiceCsv">
+        <constructor-arg name="questionDaoCsv" ref="questionDaoCsv"/>
+    </bean>
+
+    <bean id="taskConsoleQuiz" class="ru.otus.homework.task.TaskConsoleQuiz">
+        <constructor-arg name="questionServiceCsv" ref="questionServiceCsv"/>
+    </bean>
+
+</beans>
