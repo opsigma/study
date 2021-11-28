@@ -22,6 +22,12 @@ buildCache {
 }
 
 rootProject.name = 'Study'
-include 'spring-01', 'spring-01:spring-01-exercise', 'spring-01:spring-01-solution'
+include 'spring',
+            'spring:spring-01',
+                'spring:spring-01:spring-01-exercise',
+                'spring:spring-01:spring-01-solution',
+            'spring:spring-02',
+                'spring:spring-02:spring-02-exercise',
+                'spring:spring-02:spring-02-solution'
 
 
