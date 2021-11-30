@@ -28,6 +28,8 @@ include 'spring',
                 'spring:spring-01:spring-01-solution',
             'spring:spring-02',
                 'spring:spring-02:spring-02-exercise',
-                'spring:spring-02:spring-02-solution'
-
+                'spring:spring-02:spring-02-solution',
+            'spring:spring-03',
+                'spring:spring-03:spring-03-spring-boot',
+                'spring:spring-03:spring-03-gen'
 
