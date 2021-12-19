@@ -1,0 +1,8 @@
+plugins {
+    id "io.freefair.aspectj"
+}
+
+dependencies {
+    //spring
+    implementation 'org.springframework:spring-context'
+}
