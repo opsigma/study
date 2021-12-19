@@ -9,7 +9,6 @@ public class Application {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/context/spring-context.xml");
         final TaskConsoleQuiz taskQuiz = context.getBean(TaskConsoleQuiz.class);
-//        final QuestionDaoCsv questionDaoCsv = context.getBean(QuestionDaoCsv.class);
 
         taskQuiz.start();
         context.close();
