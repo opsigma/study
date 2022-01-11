@@ -77,4 +77,5 @@ include 'spring',
                     'spring:spring-08-orm:orm-class-work:orm-solution-final',
 
         'homework', 
-            'homework:homework-01'
+            'homework:homework-01',
+            'homework:homework-02'
