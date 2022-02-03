@@ -13,6 +13,7 @@ public class UserServiceConsole implements UserService {
 
     private final ShellServiceConsole consoleCommandService;
 
+    @Override
     public User getUser() {
         final User user = new User();
         user.setName(consoleCommandService.getUserName());

@@ -30,10 +30,12 @@ public class QuizServiceConsole implements QuizService {
         return new Quiz();
     }
 
+    @Override
     public List<Answer> askQuestions() {
         return questionServiceCsv.getQuestions().stream().map(this::ask).collect(Collectors.toList());
     }
 
+    @Override
     public Answer ask(Question question) {
         outputStream.outputLine(question.getQuestion());
 
@@ -53,6 +55,7 @@ public class QuizServiceConsole implements QuizService {
         return answer;
     }
 
+    @Override
     public void calculateScore(Quiz quiz) {
         quiz.getAnswers().forEach(a -> a.setScore(a.getQuestion().getCorrectAnswer().equals(a.getAnswer())));
     }

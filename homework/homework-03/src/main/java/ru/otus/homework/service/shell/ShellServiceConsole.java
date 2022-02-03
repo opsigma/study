@@ -19,14 +19,17 @@ public class ShellServiceConsole implements ShellService {
     private static final String ENTER_NAME = "Enter Name:";
     private static final String ENTER_SURNAME = "Enter Surname:";
 
+    @Override
     public String getUserName() {
         return getInfo(ENTER_NAME, "TEST_USER");
     }
 
+    @Override
     public String getUserSurname(){
         return getInfo(ENTER_SURNAME, "TEST_SURNAME");
     }
 
+    @Override
     public String getInfo(String lineString, String defaultValue) {
         outputStream.outputLine(lineString);
         return Optional.ofNullable(inputStream.readLine()).filter(s -> s.length() > 0).orElse(defaultValue);
