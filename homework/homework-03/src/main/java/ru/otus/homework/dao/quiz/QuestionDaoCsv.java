@@ -6,7 +6,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.homework.dao.resource.ResourceDaoFile;
 import ru.otus.homework.domain.quiz.Option;
 import ru.otus.homework.domain.quiz.Question;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@Repository
+@Component
 public class QuestionDaoCsv implements QuestionDao {
 
     private final String delimiter ;

@@ -1,10 +1,10 @@
 package ru.otus.homework.dao.stream;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.io.PrintStream;
 
-@Repository
+@Component
 public class OutputStreamDaoPrintStream implements OutputStreamDao {
 
     private final PrintStream out;

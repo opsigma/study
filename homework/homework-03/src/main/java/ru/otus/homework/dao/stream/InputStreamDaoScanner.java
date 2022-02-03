@@ -1,11 +1,11 @@
 package ru.otus.homework.dao.stream;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-@Repository
+@Component
 public class InputStreamDaoScanner implements InputStreamDao {
 
     private final Scanner scanner;
