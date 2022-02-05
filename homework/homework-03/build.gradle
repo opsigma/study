@@ -1,9 +1,7 @@
-repositories {
-    mavenCentral()
-}
 dependencies{
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation "ch.qos.logback:logback-classic:1.2.10"
+    annotationProcessor  'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'ch.qos.logback:logback-classic:1.2.10'
     implementation 'org.apache.commons:commons-csv:1.8'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -11,4 +9,5 @@ dependencies{
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+compileJava.inputs.files(processResources)
 

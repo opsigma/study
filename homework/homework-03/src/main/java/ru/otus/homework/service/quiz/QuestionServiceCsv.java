@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.dao.quiz.QuestionDaoCsv;
 import ru.otus.homework.domain.quiz.Question;
+import ru.otus.homework.service.locale.LocaleServiceSimple;
 
 import java.util.List;
 
@@ -13,14 +14,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuestionServiceCsv implements QuestionService {
 
-    private static final String QUESTION_EMPTY = "Empty list of questions";
     private final QuestionDaoCsv questionDaoCsv;
-    
+    private final LocaleServiceSimple localeService;
+
+    private static final String C_QUESTION_EMPTY = "strings.app.service.quiz.questionEmpty";
+
     @Override
     public List<Question> getQuestions() {
         final List<Question> questions = questionDaoCsv.loadQuestions();
         if(questions.isEmpty()){
-            log.info(QUESTION_EMPTY);
+            log.info(localeService.getMessage(C_QUESTION_EMPTY));
         }
         return questions;
     }

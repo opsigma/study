@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.dao.stream.InputStreamDaoScanner;
 import ru.otus.homework.dao.stream.OutputStreamDaoPrintStream;
+import ru.otus.homework.service.locale.LocaleServiceSimple;
 
 import java.util.Optional;
 
@@ -15,18 +16,19 @@ public class ShellServiceConsole implements ShellService {
 
     private final InputStreamDaoScanner inputStream;
     private final OutputStreamDaoPrintStream outputStream;
+    private final LocaleServiceSimple localeService;
 
-    private static final String ENTER_NAME = "Enter Name:";
-    private static final String ENTER_SURNAME = "Enter Surname:";
+    private static final String C_ENTER_NAME = "strings.app.service.shell.enterName";
+    private static final String C_ENTER_SURNAME = "strings.app.service.shell.enterSurname";
 
     @Override
     public String getUserName() {
-        return getInfo(ENTER_NAME, "TEST_USER");
+        return getInfo(localeService.getMessage(C_ENTER_NAME), "TEST_USER");
     }
 
     @Override
     public String getUserSurname(){
-        return getInfo(ENTER_SURNAME, "TEST_SURNAME");
+        return getInfo(localeService.getMessage(C_ENTER_SURNAME), "TEST_SURNAME");
     }
 
     @Override

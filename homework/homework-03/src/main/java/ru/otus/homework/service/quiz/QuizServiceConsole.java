@@ -9,6 +9,7 @@ import ru.otus.homework.domain.quiz.Answer;
 import ru.otus.homework.domain.quiz.Option;
 import ru.otus.homework.domain.quiz.Question;
 import ru.otus.homework.domain.quiz.Quiz;
+import ru.otus.homework.service.locale.LocaleServiceSimple;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,8 +23,9 @@ public class QuizServiceConsole implements QuizService {
     private final InputStreamDaoScanner inputStream;
     private final OutputStreamDaoPrintStream outputStream;
     private final QuestionServiceCsv questionServiceCsv;
+    private final LocaleServiceSimple localeService;
 
-    private static final String ANSWER_CANNOT_BE_EMPTY = "Warning. The answer cannot be empty.";
+    private static final String C_ANSWER_CANNOT_BE_EMPTY = "strings.app.service.quiz.answerCannotBeEmpty";
 
     @Override
     public Quiz startQuiz() {
@@ -47,7 +49,7 @@ public class QuizServiceConsole implements QuizService {
         outputStream.outputLine(options);
         String line;
         while ((line = inputStream.readLine()).length() == 0) {
-            outputStream.outputLine(ANSWER_CANNOT_BE_EMPTY);
+            outputStream.outputLine(localeService.getMessage(C_ANSWER_CANNOT_BE_EMPTY));
         }
         Answer answer = new Answer();
         answer.setQuestion(question);

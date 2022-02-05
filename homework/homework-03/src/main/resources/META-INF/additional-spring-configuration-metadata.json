@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "app.title",
+      "type": "java.lang.String",
+      "description": "Description for app.title."
+    },
+    {
+      "name": "app.version",
+      "type": "java.lang.String",
+      "description": "Description for app.version."
+    },
+    {
+      "name": "app.dao.questionDao.delimiter",
+      "type": "java.lang.String",
+      "description": "Description for app.dao.questionDao.delimiter."
+    },
+    {
+      "name": "app.dao.questionDao.path",
+      "type": "java.lang.String",
+      "description": "Description for app.dao.questionDao.path."
+    },
+    {
+      "name": "app.dao.localeProvider.lang",
+      "type": "java.lang.String",
+      "description": "Description for app.dao.localeProvider.lang."
+    }
+  ] }
