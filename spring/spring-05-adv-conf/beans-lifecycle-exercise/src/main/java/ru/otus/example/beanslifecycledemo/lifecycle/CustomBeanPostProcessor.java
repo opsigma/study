@@ -22,11 +22,11 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
             System.out.println("Шаг #9: BeanPostProcessor.postProcessAfterInitialization\n");
         }
 
-/*
+
         if (bean.getClass().isAssignableFrom(Phone.class)) {
             updateGreeting(bean);
         }
-*/
+
         return bean;
     }
 
