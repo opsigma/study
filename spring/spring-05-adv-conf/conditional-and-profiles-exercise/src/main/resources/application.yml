@@ -5,7 +5,7 @@ condition:
 spring:
   profiles:
     #Доступные профили: Oleg и Peter
-    active:
+    active: Oleg, Peter
 
 logging:
   level:
