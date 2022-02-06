@@ -29,6 +29,10 @@ subprojects {
             implementation 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
         }
     }
-
+    if(project.name.startsWith("test-configuration-")){
+        test {
+            useJUnitPlatform()
+        }
+    }
 
 }
