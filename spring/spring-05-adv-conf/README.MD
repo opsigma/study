@@ -1,0 +1,8 @@
+* [Spring изнутри. Этапы инициализации контекста](https://habr.com/ru/post/222579/)
+* [Евгений Борисов, Кирилл Толкачев — Проклятие Spring Test](https://www.youtube.com/watch?v=7mZqJShu_3c)
+* [Bean Scopes](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html)
+* [Lifecycle Callbacks](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html)
+* [Этот замечательный Spring Shell | OTUS](https://otus.ru/nest/post/869/)
+* [Тестирование вместе с Spring Boot. Часть 1 | OTUS](https://otus.ru/nest/post/428/)
+* [Тестирование вместе с Spring Boot. Часть 2 | OTUS](https://otus.ru/nest/post/429/)
+* [Внедрение зависимостей в Spring. Погружение | OTUS](https://otus.ru/nest/post/1728/)
