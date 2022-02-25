@@ -1,0 +1,14 @@
+
+spring:
+  messages:
+    basename: i18n/messages
+app:
+  title: Quiz Console
+  version: 0.1
+  dao:
+    questionDao:
+      delimiter: ;
+      path: /quiz/question.csv
+    localeProvider:
+      lang: en
+debug: true

@@ -12,6 +12,7 @@ dependencyResolutionManagement {
     repositories {
         mavenLocal()
         mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
     }
 }
 
@@ -79,4 +80,5 @@ include 'spring',
         'homework', 
             'homework:homework-01',
             'homework:homework-02',
-            'homework:homework-03'
+            'homework:homework-03',
+            'homework:homework-04'
