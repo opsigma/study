@@ -6,3 +6,9 @@ spring:
     allow-circular-references: true
   messages:
     basename: i18n/message
+app:
+  title: Test Quiz Console
+  version: 0.1
+  dao:
+    localeProvider:
+      lang: en
