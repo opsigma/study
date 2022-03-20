@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import ru.otus.homework.dao.quiz.QuestionDaoCsv;
 import ru.otus.homework.domain.quiz.Option;
 import ru.otus.homework.domain.quiz.Question;
@@ -12,6 +13,7 @@ import ru.otus.homework.domain.quiz.Question;
 import java.util.List;
 
 @SpringBootTest
+@ContextConfiguration(classes = QuestionConfiguration.class)
 class QuestionServiceCsvTest {
 
     @MockBean
