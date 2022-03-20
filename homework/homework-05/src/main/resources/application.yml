@@ -1,0 +1,17 @@
+app:
+  title: Ebook Library
+  version: 0.1
+  dao:
+    localeProvider:
+      lang: en
+spring:
+  datasource:
+    url: jdbc:h2:mem:home5db
+  messages:
+    basename: i18n/messages
+  sql:
+    init:
+      mode: always
+      data-locations: /data/data.sql
+      schema-locations: /data/schema.sql
+#debug: true
