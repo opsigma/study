@@ -1,10 +1,9 @@
 package ru.otus.spring;
 
-import org.h2.tools.Console;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import ru.otus.spring.dao.PersonDao;
+import ru.otus.spring.service.AppService;
 
 @SpringBootApplication
 public class Main {
@@ -13,8 +12,10 @@ public class Main {
 
         ApplicationContext context = SpringApplication.run(Main.class);
 
-        PersonDao dao = context.getBean(PersonDao.class);
+        AppService appService = context.getBean(AppService.class);
 
-        Console.main(args);
+//        Console.main(args);
+
+        appService.example();
     }
 }
