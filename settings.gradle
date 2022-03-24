@@ -81,4 +81,5 @@ include 'spring',
             'homework:homework-01',
             'homework:homework-02',
             'homework:homework-03',
-            'homework:homework-04'
+            'homework:homework-04',
+            'homework:homework-07'
