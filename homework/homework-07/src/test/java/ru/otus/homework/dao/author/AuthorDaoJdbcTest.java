@@ -29,9 +29,9 @@ class AuthorDaoJdbcTest {
 
     @Test
     @DisplayName("должен возвращать ожидаемый список авторов.")
-    void getAll() {
-        Author expectedAuthor1 = Author.builder().id(1L).name("author").build();
-        Author expectedAuthor2 = Author.builder().id(EXISTING_AUTHOR_ID).name(EXISTING_AUTHOR_NAME).build();
+    void shouldReturnExpectedAuthorList() {
+        var expectedAuthor1 = Author.builder().id(1L).name("author").build();
+        var expectedAuthor2 = Author.builder().id(EXISTING_AUTHOR_ID).name(EXISTING_AUTHOR_NAME).build();
         List<Author> actualAuthorList = authorDaoJdbc.getAll();
         assertThat(actualAuthorList)
                 .usingRecursiveFieldByFieldElementComparator()
@@ -62,7 +62,7 @@ class AuthorDaoJdbcTest {
     @Test
     @DisplayName("обновлять автора в БД")
     void shouldUpdateAuthor() {
-        Author expectedAuthor = Author.builder().id(2L).name("author2 update").build();
+        var expectedAuthor = Author.builder().id(2L).name("author2 update").build();
         authorDaoJdbc.update(expectedAuthor);
         var actualAuthor = authorDaoJdbc.getById(2L);
         Assertions.assertThat(expectedAuthor)

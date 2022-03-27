@@ -45,7 +45,7 @@ class BookDaoJdbcTest {
 
     @Test
     @DisplayName("должен возвращать ожидаемый список книг.")
-    void getAll() {
+    void shouldReturnExpectedBookList() {
         List<Book> actualBookList = bookDaoJdbc.getAll();
         assertThat(actualBookList)
                 .usingRecursiveFieldByFieldElementComparator()
@@ -76,8 +76,7 @@ class BookDaoJdbcTest {
     @Test
     @DisplayName("обновлять книгу в БД")
     void shouldUpdateBook() {
-
-        Book expectedBook = existingBook2;
+        var expectedBook = existingBook2;
         expectedBook.setAuthor(existingAuthor1);
         expectedBook.setGenre(existingGenre1);
         bookDaoJdbc.update(expectedBook);

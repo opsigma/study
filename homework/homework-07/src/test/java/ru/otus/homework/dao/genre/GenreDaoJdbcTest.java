@@ -27,9 +27,9 @@ class GenreDaoJdbcTest {
 
     @Test
     @DisplayName("возвращать ожидаемый список жанров.")
-    void getAll() {
-        Genre expectedGenre1 = Genre.builder().id(1L).name("genre").build();
-        Genre expectedGenre2 = Genre.builder().id(EXISTING_GENRE_ID).name(EXISTING_GENRE_NAME).build();
+    void shouldReturnExpectedGenreList() {
+        var expectedGenre1 = Genre.builder().id(1L).name("genre").build();
+        var expectedGenre2 = Genre.builder().id(EXISTING_GENRE_ID).name(EXISTING_GENRE_NAME).build();
         List<Genre> actualGenreList = genreDaoJdbc.getAll();
         assertThat(actualGenreList)
                 .usingRecursiveFieldByFieldElementComparator()

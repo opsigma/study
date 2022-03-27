@@ -51,7 +51,7 @@ public class BookDaoJdbc implements BookDao {
     public long insert(Book book) {
         MapSqlParameterSource map = getParameterMap(book);
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update("insert into book (name, author_id, genre_id) values ( :name, :autor_id, :genere_id)", map, keyHolder);
+        jdbcTemplate.update("insert into book (name, author_id, genre_id) values ( :name, :author_id, :genre_id)", map, keyHolder);
         return Objects.requireNonNull(keyHolder.getKey()).longValue();
     }
 
@@ -70,7 +70,7 @@ public class BookDaoJdbc implements BookDao {
                 , genreIdColumnName, genreNameColumnName
         );
 
-        return DataAccessUtils.singleResult(jdbcTemplate.query(sql, Collections.singletonMap("id", id), new BookMapper()));
+        return jdbcTemplate.queryForObject(sql, Collections.singletonMap("id", id), new BookMapper());
     }
 
     @Override
