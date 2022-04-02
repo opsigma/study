@@ -26,7 +26,7 @@ public class OtusStudent {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "avatar_id")
     private Avatar avatar;
     //private List<EMail> emails;
