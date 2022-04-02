@@ -24,6 +24,6 @@ public class Avatar {
     @Column(name = "photo_url")
     private String photoUrl;
 
-    @OneToOne
+    @OneToOne(mappedBy = "avatar")
     private OtusStudent student;
 }
