@@ -1,0 +1,27 @@
+plugins {
+    id 'base'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'ru.otus'
+    version = '1.0'
+    sourceCompatibility = JavaVersion.VERSION_11
+    ext{
+        mongockVersion = '4.3.8'
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+        implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.3'
+        if (project.name.contains('solution')) {
+            implementation "com.github.cloudyrock.mongock:mongock-spring-v5:$mongockVersion"
+            implementation "com.github.cloudyrock.mongock:mongodb-springdata-v3-driver:$mongockVersion"
+        }
+    }
+}
