@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -35,5 +37,10 @@ public class OtusStudent {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "student_id")
     private List<EMail> emails;
-    //private List<Course> courses;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "student_course"
+            , joinColumns = @JoinColumn(name = "student_id")
+            , inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
 }
