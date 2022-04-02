@@ -1,8 +1,6 @@
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
-    initialization-mode: never
-
   jpa:
     generate-ddl: true
     hibernate:
@@ -13,6 +11,9 @@ spring:
         format_sql: true
 
     show-sql: true
+  sql:
+    init:
+      mode: never
 
 
 logging:
