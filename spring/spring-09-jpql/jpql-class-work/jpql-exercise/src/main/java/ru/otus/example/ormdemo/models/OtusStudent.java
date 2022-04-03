@@ -1,8 +1,24 @@
 package ru.otus.example.ormdemo.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.List;
 
 @Data
@@ -10,6 +26,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity // Указывает, что данный класс является сущностью
 @Table(name = "otus_students") // Задает имя таблицы, на которую будет отображаться сущность
+@NamedEntityGraph(name = "avatars-entity-graph"
+        , attributeNodes = {@NamedAttributeNode("avatar")})
 public class OtusStudent {
     @Id // Позволяет указать какое поле является идентификатором
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Стратегия генерации идентификаторов

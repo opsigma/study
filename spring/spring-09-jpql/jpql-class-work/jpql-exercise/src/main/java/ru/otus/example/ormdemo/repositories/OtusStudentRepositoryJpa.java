@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.example.ormdemo.models.OtusStudent;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -43,9 +44,11 @@ public class OtusStudentRepositoryJpa implements OtusStudentRepository {
 
     @Override
     public List<OtusStudent> findAll() {
+        EntityGraph<?> entityGraph = em.getEntityGraph("avatars-entity-graph");
         TypedQuery<OtusStudent> query = em.createQuery(
                 "select s from OtusStudent s"
                 , OtusStudent.class);
+        query.setHint("javax.persistence.fetchgraph", entityGraph);
         return query.getResultList();
     }
 
