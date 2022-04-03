@@ -3,6 +3,7 @@ package ru.otus.example.ormdemo.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -51,7 +52,8 @@ public class OtusStudent {
     private List<EMail> emails;
 
     // Указывает на связь между таблицами "многие ко многим"
-    @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 5)
+    @Fetch(FetchMode.SELECT)
     @ManyToMany(targetEntity = Course.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     // Задает таблицу связей между таблицами для хранения родительской и связанной сущностью
     @JoinTable(name = "student_courses", joinColumns = @JoinColumn(name = "student_id"),
