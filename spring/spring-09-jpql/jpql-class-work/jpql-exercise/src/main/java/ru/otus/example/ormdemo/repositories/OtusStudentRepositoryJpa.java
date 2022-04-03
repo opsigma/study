@@ -6,6 +6,7 @@ import ru.otus.example.ormdemo.models.OtusStudent;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -43,12 +44,19 @@ public class OtusStudentRepositoryJpa implements OtusStudentRepository {
 
     @Override
     public List<OtusStudent> findAll() {
-        return Collections.emptyList();
+        TypedQuery<OtusStudent> query = em.createQuery(
+                "select s from OtusStudent s"
+                , OtusStudent.class);
+        return query.getResultList();
     }
 
     @Override
     public List<OtusStudent> findByName(String name) {
-        return Collections.emptyList();
+        TypedQuery<OtusStudent> query = em.createQuery(
+                "select s from OtusStudent s where s.name = :name"
+                , OtusStudent.class);
+        query.setParameter("name", name);
+        return query.getResultList();
     }
 
     @Override
