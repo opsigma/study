@@ -28,12 +28,17 @@ public class OtusStudentRepositoryJpa implements OtusStudentRepository {
 
     @Override
     public OtusStudent save(OtusStudent student) {
-        return null;
+        if (student.getId() == 0) {
+            em.persist(student);
+            return student;
+        } else {
+            return em.merge(student);
+        }
     }
 
     @Override
     public Optional<OtusStudent> findById(long id) {
-        return Optional.empty();
+        return Optional.ofNullable(em.find(OtusStudent.class, id));
     }
 
     @Override
