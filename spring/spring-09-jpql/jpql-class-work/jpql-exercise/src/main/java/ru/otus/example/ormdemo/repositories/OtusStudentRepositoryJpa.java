@@ -7,7 +7,6 @@ import ru.otus.example.ormdemo.models.OtusStudent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,11 +60,17 @@ public class OtusStudentRepositoryJpa implements OtusStudentRepository {
 
     @Override
     public void updateNameById(long id, String name) {
-
+        var query = em.createQuery("update OtusStudent s set s.name=:name where s.id = :id");
+        query.setParameter("name", name);
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 
     @Override
     public void deleteById(long id) {
+        var query = em.createQuery("delete from OtusStudent s where s.id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 
 }
