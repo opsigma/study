@@ -18,7 +18,7 @@ dependencyResolutionManagement {
 
 buildCache {
     local {
-        directory = "/.gradle/build-cache"
+        directory = "./.gradle/build-cache"
     }
 }
 
