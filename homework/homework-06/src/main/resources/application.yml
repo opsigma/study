@@ -1,5 +1,5 @@
 app:
-  title: Ebook Library
+  title: Ebook Library JPA
   version: 0.1
   dao:
     localeProvider:
@@ -12,8 +12,6 @@ spring:
   sql:
     init:
       mode: always
-#      data-locations: data.sql
-#      schema-locations: schema.sql
   shell:
     interactive:
       enabled: true

@@ -1,5 +1,5 @@
 app:
-  title: Ebook Library
+  title: Ebook Library JPA
   version: 0.1
   dao:
     localeProvider:
