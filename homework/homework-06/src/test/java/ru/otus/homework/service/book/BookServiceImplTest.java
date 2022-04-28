@@ -40,10 +40,10 @@ class BookServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        existingAuthor1 = Author.builder().id(1L).name("author1").build();
-        existingAuthor2 = Author.builder().id(2L).name("author2").build();
-        existingGenre1 = Genre.builder().id(1L).name("genre1").build();
-        existingGenre2 = Genre.builder().id(2L).name("genre2").build();
+        existingAuthor1 = Author.builder().id(1L).build();
+        existingAuthor2 = Author.builder().id(2L).build();
+        existingGenre1 = Genre.builder().id(1L).build();
+        existingGenre2 = Genre.builder().id(2L).build();
         existingBook1 = Book.builder().id(1L).name("book1").author(existingAuthor1).genre(existingGenre1).build();
         existingBook2 = Book.builder().id(2L).name("book2").author(existingAuthor2).genre(existingGenre1).build();
     }
@@ -61,7 +61,9 @@ class BookServiceImplTest {
     @Test
     @DisplayName("создавать книгу")
     void shouldCreateBook() {
-        var expectedBook = Book.builder().name("Тестовая книга").author(existingAuthor1).genre(existingGenre1).build();
+        var expectedBook = Book.builder().name("Тестовая книга")
+                .author(existingAuthor1)
+                .genre(existingGenre1).build();
         bookService.create(expectedBook.getName(), expectedBook.getAuthor().getId(), expectedBook.getGenre().getId());
         Mockito.verify(bookRepositoryJpa, Mockito.times(1)).save(expectedBook);
     }

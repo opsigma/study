@@ -55,7 +55,7 @@ class BookRepositoryJpaTest {
     }
 
     @Test
-    @DisplayName("возвращать всех книги из БД")
+    @DisplayName("возвращать все книги из БД")
     void shouldReturnAllBooks() {
         List<Book> expectedBooks = List.of(existingBook1, existingBook2);
         List<Book> actualBooks = bookRepositoryJpa.getAll();

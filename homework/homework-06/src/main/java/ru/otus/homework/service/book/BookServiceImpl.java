@@ -41,7 +41,12 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void update(Long id, String name, Long authorId, Long genreId) {
-        bookRepositoryJpa.update(id,name,authorId,genreId);
+        Book book = Book.builder().name(name)
+                .id(id)
+                .author(Author.builder().id(authorId).build())
+                .genre(Genre.builder().id(genreId).build())
+                .build();
+        bookRepositoryJpa.save(book);
     }
 
     @Override

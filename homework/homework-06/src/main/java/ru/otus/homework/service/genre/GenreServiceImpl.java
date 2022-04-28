@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.genre.Genre;
-import ru.otus.homework.repository.genre.GenreRepository;
 import ru.otus.homework.repository.genre.GenreRepositoryJpa;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package ru.otus.homework;
 
+import org.h2.tools.Console;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.h2.tools.Console;
 
 import java.sql.SQLException;
 

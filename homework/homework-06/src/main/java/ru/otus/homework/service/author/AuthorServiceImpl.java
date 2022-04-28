@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.author.Author;
-import ru.otus.homework.repository.author.AuthorRepository;
 import ru.otus.homework.repository.author.AuthorRepositoryJpa;
 
 import java.util.List;

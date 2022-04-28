@@ -1,7 +1,6 @@
 package ru.otus.homework.service.author;
 
 
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,13 +22,13 @@ class AuthorServiceImplTest {
 
     @Autowired
     private AuthorServiceImpl authorService;
-    
+
     @MockBean
     private AuthorRepositoryJpa authorRepositoryJpa;
-    
+
     private Author existingAuthor1;
     private Author existingAuthor2;
-    
+
     @BeforeEach
     void setUp() {
         existingAuthor1 = Author.builder().id(1L).name("author1").build();
@@ -39,7 +38,7 @@ class AuthorServiceImplTest {
     @DisplayName("должен возвращать ожидаемый список авторов")
     @Test
     void shouldReturnExpectedAuthorList() {
-        List<Author> expectedAuthorList =List.of(existingAuthor1, existingAuthor2);
+        List<Author> expectedAuthorList = List.of(existingAuthor1, existingAuthor2);
         Mockito.when(authorRepositoryJpa.getAll()).thenReturn(expectedAuthorList);
         List<Author> actualBookList = authorRepositoryJpa.getAll();
         assertThat(actualBookList).usingRecursiveComparison().isEqualTo(expectedAuthorList);
@@ -69,7 +68,7 @@ class AuthorServiceImplTest {
     void shouldUpdateBook() {
         var expectedAuthor = existingAuthor2;
         expectedAuthor.setName("update Author");
-        authorService.update(expectedAuthor.getId(),expectedAuthor.getName());
+        authorService.update(expectedAuthor.getId(), expectedAuthor.getName());
         Mockito.verify(authorRepositoryJpa, Mockito.times(1)).save(expectedAuthor);
     }
 

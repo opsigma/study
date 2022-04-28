@@ -1,6 +1,5 @@
 package ru.otus.homework.repository.genre;
 
-import org.springframework.lang.NonNull;
 import ru.otus.homework.domain.genre.Genre;
 
 import java.util.List;

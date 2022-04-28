@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public Comment create(Long bookId, String comment) {
-        Comment  c = Comment.builder()
+        Comment c = Comment.builder()
                 .book(Book.builder().id(bookId).build())
                 .comment(comment)
                 .build();
@@ -39,8 +39,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public void update(Long id,Long bookId, String comment) {
-        Comment  c = Comment.builder()
+    public void update(Long id, Long bookId, String comment) {
+        Comment c = Comment.builder()
                 .id(id)
                 .book(Book.builder().id(bookId).build())
                 .comment(comment)

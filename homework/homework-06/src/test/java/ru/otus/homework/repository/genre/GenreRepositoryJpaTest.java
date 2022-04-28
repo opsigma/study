@@ -59,5 +59,5 @@ class GenreRepositoryJpaTest {
     void shouldCorrectDeleteGenreById() {
 
     }
-    
+
 }

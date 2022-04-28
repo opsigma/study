@@ -31,7 +31,7 @@ public class CommentController {
     }
 
     @ShellMethod(value = "Update Comment command", key = {"cu", "commentUpdate"})
-    public void update(@ShellOption Long id,@ShellOption Long bookId, @ShellOption String comment) {
+    public void update(@ShellOption Long id, @ShellOption Long bookId, @ShellOption String comment) {
         commentService.update(id, bookId, comment);
     }
 
