@@ -40,10 +40,4 @@ public class Genre {
 
     @Column(name = "name", length = 30, nullable = false, unique = true)
     private String name;
-
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @BatchSize(size = 15)
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Book> books;
 }

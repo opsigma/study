@@ -2,7 +2,10 @@ package ru.otus.homework.service.genre;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.genre.Genre;
+import ru.otus.homework.repository.genre.GenreRepository;
+import ru.otus.homework.repository.genre.GenreRepositoryJpa;
 
 import java.util.List;
 
@@ -10,28 +13,37 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GenreServiceImpl implements GenreService {
 
+    private final GenreRepositoryJpa genreRepository;
+
     @Override
+    @Transactional(readOnly = true)
     public List<Genre> getAll() {
-        return null;
+        return genreRepository.getAll();
     }
 
     @Override
+    @Transactional
     public Long create(String name) {
-        return null;
+        Genre genre = Genre.builder().name(name).build();
+        return genreRepository.save(genre).getId();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Genre read(Long id) {
-        return null;
+        return genreRepository.getById(id);
     }
 
     @Override
+    @Transactional
     public void update(Long id, String name) {
-
+        Genre genre = Genre.builder().id(id).name(name).build();
+        genreRepository.save(genre);
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
-
+        genreRepository.deleteById(id);
     }
 }

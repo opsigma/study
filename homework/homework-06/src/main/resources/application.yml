@@ -6,12 +6,13 @@ app:
       lang: en
 spring:
   datasource:
-    url: jdbc:h2:mem:home6db
+    url: jdbc:h2:mem:testHome6db
   messages:
     basename: i18n/messages
   sql:
     init:
       mode: always
+      data-locations: data.sql
   shell:
     interactive:
       enabled: true

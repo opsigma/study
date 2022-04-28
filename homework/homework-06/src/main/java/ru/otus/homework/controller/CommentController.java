@@ -8,7 +8,6 @@ import org.springframework.shell.standard.ShellOption;
 import ru.otus.homework.domain.book.Comment;
 import ru.otus.homework.service.book.CommentService;
 
-
 import java.util.List;
 
 @ShellComponent
@@ -32,8 +31,8 @@ public class CommentController {
     }
 
     @ShellMethod(value = "Update Comment command", key = {"cu", "commentUpdate"})
-    public void update(@ShellOption Long bookId, @ShellOption String comment) {
-        commentService.update(bookId, comment);
+    public void update(@ShellOption Long id,@ShellOption Long bookId, @ShellOption String comment) {
+        commentService.update(id, bookId, comment);
     }
 
     @ShellMethod(value = "Delete comment command", key = {"cd", "commentDelete"})

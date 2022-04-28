@@ -39,10 +39,4 @@ public class Author {
 
     @Column(name = "name", length = 150, nullable = false)
     private String name;
-
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @BatchSize(size = 15)
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Book> books;
 }
