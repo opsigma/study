@@ -21,7 +21,7 @@ public class BookController {
     }
 
     @ShellMethod(value = "Create book command", key = {"bc", "bookCreate"})
-    public Long create(@ShellOption String name, @ShellOption Long authorId, @ShellOption Long genreId) {
+    public Book create(@ShellOption String name, @ShellOption Long authorId, @ShellOption Long genreId) {
         return bookService.create(name, authorId, genreId);
     }
 

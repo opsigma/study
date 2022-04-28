@@ -21,7 +21,7 @@ public class AuthorController {
     }
 
     @ShellMethod(value = "Create author command", key = {"ac", "authorCreate"})
-    public Long create(@ShellOption String name) {
+    public Author create(@ShellOption String name) {
         return authorService.create(name);
     }
 

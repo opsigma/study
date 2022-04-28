@@ -7,7 +7,7 @@ import java.util.List;
 public interface AuthorService {
     List<Author> getAll();
 
-    Long create(String name);
+    Author create(String name);
 
     Author read(long id);
 

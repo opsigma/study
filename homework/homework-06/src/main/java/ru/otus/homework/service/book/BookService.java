@@ -8,7 +8,7 @@ public interface BookService {
 
     List<Book> getAll();
 
-    Long create(String name, Long authorId, Long genreId);
+    Book create(String name, Long authorId, Long genreId);
 
     Book read(Long id);
 

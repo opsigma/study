@@ -22,7 +22,7 @@ public class GenreController {
     }
 
     @ShellMethod(value = "Create genre command", key = {"gc", "genreCreate"})
-    public Long create(@ShellOption String name) {
+    public Genre create(@ShellOption String name) {
         return genreService.create(name);
     }
 

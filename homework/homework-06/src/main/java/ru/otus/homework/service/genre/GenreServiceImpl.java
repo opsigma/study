@@ -23,9 +23,9 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     @Transactional
-    public Long create(String name) {
+    public Genre create(String name) {
         Genre genre = Genre.builder().name(name).build();
-        return genreRepository.save(genre).getId();
+        return genreRepository.save(genre);
     }
 
     @Override

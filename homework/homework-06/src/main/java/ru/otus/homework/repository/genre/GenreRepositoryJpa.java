@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,7 +28,12 @@ public class GenreRepositoryJpa implements GenreRepository {
     @Override
     @Transactional
     public Genre save(Genre genre) {
-        return null;
+        if (Objects.isNull(genre.getId())) {
+            em.persist(genre);
+            return genre;
+        } else {
+            return em.merge(genre);
+        }
     }
 
     @Override

@@ -21,7 +21,7 @@ public class CommentController {
     }
 
     @ShellMethod(value = "Create comment command", key = {"cc", "commentCreate"})
-    public Long create(@ShellOption Long bookId, @ShellOption String comment) {
+    public Comment create(@ShellOption Long bookId, @ShellOption String comment) {
         return commentService.create(bookId, comment);
     }
 

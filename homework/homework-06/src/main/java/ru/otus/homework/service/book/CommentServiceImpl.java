@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.book.Book;
 import ru.otus.homework.domain.book.Comment;
-import ru.otus.homework.repository.book.CommentRepository;
 import ru.otus.homework.repository.book.CommentRepositoryJpa;
 
 import java.util.List;
@@ -14,28 +13,28 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
 
-    private final CommentRepositoryJpa commentRepository;
+    private final CommentRepositoryJpa commentRepositoryJpa;
 
     @Override
     @Transactional(readOnly = true)
     public List<Comment> getAll() {
-        return commentRepository.getAll();
+        return commentRepositoryJpa.getAll();
     }
 
     @Override
     @Transactional
-    public Long create(Long bookId, String comment) {
+    public Comment create(Long bookId, String comment) {
         Comment  c = Comment.builder()
                 .book(Book.builder().id(bookId).build())
                 .comment(comment)
                 .build();
-        return commentRepository.save(c).getId();
+        return commentRepositoryJpa.save(c);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Comment read(Long id) {
-        return commentRepository.getById(id);
+        return commentRepositoryJpa.getById(id);
     }
 
     @Override
@@ -46,12 +45,12 @@ public class CommentServiceImpl implements CommentService {
                 .book(Book.builder().id(bookId).build())
                 .comment(comment)
                 .build();
-        commentRepository.save(c);
+        commentRepositoryJpa.save(c);
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-        commentRepository.deleteById(id);
+        commentRepositoryJpa.deleteById(id);
     }
 }

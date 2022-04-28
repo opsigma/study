@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @RequiredArgsConstructor
@@ -40,7 +41,12 @@ public class CommentRepositoryJpa implements CommentRepository {
     @Override
     @Transactional
     public Comment save(@NonNull Comment comment) {
-        return null;
+        if (Objects.isNull(comment.getId())) {
+            em.persist(comment);
+            return comment;
+        } else {
+            return em.merge(comment);
+        }
     }
 
     @Override

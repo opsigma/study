@@ -8,7 +8,7 @@ public interface GenreService {
 
     List<Genre> getAll();
 
-    Long create(String name);
+    Genre create(String name);
 
     Genre read(Long id);
 

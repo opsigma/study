@@ -23,8 +23,8 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     @Transactional
-    public Long create(String name) {
-        return authorRepository.save(Author.builder().name(name).build()).getId();
+    public Author create(String name) {
+        return authorRepository.save(Author.builder().name(name).build());
     }
 
     @Override

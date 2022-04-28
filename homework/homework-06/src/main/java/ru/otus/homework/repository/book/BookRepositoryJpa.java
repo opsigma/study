@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @RequiredArgsConstructor
@@ -28,7 +29,12 @@ public class BookRepositoryJpa implements BookRepository {
     @Override
     @Transactional
     public Book save(@NonNull Book book) {
-        return null;
+        if (Objects.isNull(book.getId())) {
+            em.persist(book);
+            return book;
+        } else {
+            return em.merge(book);
+        }
     }
 
     @Override
