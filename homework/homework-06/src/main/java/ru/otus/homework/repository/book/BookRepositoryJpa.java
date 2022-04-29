@@ -27,6 +27,15 @@ public class BookRepositoryJpa implements BookRepository {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Book> getAllByName(String name) {
+        TypedQuery<Book> query = em.createQuery("select b from Book b " +
+                "where b.name = :name", Book.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+
+    @Override
     @Transactional
     public Book save(@NonNull Book book) {
         if (Objects.isNull(book.getId())) {
@@ -40,7 +49,7 @@ public class BookRepositoryJpa implements BookRepository {
     @Override
     @Transactional(readOnly = true)
     public Book getById(Long id) {
-        return null;
+        return em.find(Book.class, id);
     }
 
     @Override
@@ -52,6 +61,7 @@ public class BookRepositoryJpa implements BookRepository {
     @Override
     @Transactional
     public void deleteById(Long id) {
-
+        Book book = em.find(Book.class, id);
+        em.remove(book);
     }
 }

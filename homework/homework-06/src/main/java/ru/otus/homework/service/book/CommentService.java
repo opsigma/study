@@ -8,6 +8,8 @@ public interface CommentService {
 
     List<Comment> getAll();
 
+    List<Comment> getAllByBook(Long bookId);
+
     Comment create(Long bookId, String comment);
 
     Comment read(Long id);

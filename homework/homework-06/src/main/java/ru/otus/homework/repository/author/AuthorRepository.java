@@ -7,6 +7,8 @@ import java.util.List;
 public interface AuthorRepository {
     List<Author> getAll();
 
+    List<Author> getByName(String name);
+
     Author save(Author author);
 
     Author getById(long id);

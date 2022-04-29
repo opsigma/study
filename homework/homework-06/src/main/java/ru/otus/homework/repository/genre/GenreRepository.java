@@ -8,6 +8,8 @@ public interface GenreRepository {
 
     List<Genre> getAll();
 
+    List<Genre> getAllByName(String name);
+
     Genre save(Genre genre);
 
     Genre getById(Long id);

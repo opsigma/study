@@ -20,6 +20,11 @@ public class BookController {
         return bookService.getAll();
     }
 
+    @ShellMethod(value = "Get all book by name command", key = {"ban", "bookAllByName"})
+    public List<Book> getAllByName(@ShellOption String name) {
+        return bookService.getAllByName(name);
+    }
+
     @ShellMethod(value = "Create book command", key = {"bc", "bookCreate"})
     public Book create(@ShellOption String name, @ShellOption Long authorId, @ShellOption Long genreId) {
         return bookService.create(name, authorId, genreId);

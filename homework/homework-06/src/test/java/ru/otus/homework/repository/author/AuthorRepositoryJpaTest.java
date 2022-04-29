@@ -12,6 +12,7 @@ import ru.otus.homework.domain.author.Author;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DataJpaTest
 @DisplayName("Репозиторий для работы с авторами должен ")
@@ -42,18 +43,36 @@ class AuthorRepositoryJpaTest {
     }
 
     @Test
+    @DisplayName("возвращать всех авторов из БД по имени")
+    void shouldReturnAllAuthorsByName() {
+        List<Author> expectedAuthors = List.of(existingAuthor1);
+        List<Author> actualAuthors = authorRepositoryJpa.getByName(existingAuthor1.getName());
+        assertThat(actualAuthors).usingRecursiveComparison().isEqualTo(expectedAuthors);
+    }
+
+    @Test
     @DisplayName("записывать нового автора в БД")
     void createNewAuthor() {
+        Author actualAuthor = authorRepositoryJpa.save(Author.builder().name("new Author").build());
+        Author expectedAuthor = Author.builder().id(3L).name("new Author").build();
+        assertThat(actualAuthor).isEqualTo(expectedAuthor);
     }
 
 
     @Test
     @DisplayName("обновлять автора в БД, если он там существует")
     void updateExistingAuthor() {
+        existingAuthor1.setName("new name");
+        Author expectedAuthor = authorRepositoryJpa.save(existingAuthor1);
+        Author actualAuthor =  em.find(Author.class, existingAuthor1.getId());
+        assertThat(actualAuthor).isEqualTo(expectedAuthor);
     }
 
     @Test
     @DisplayName("удалять по ИД автора из БД, если он там существует")
     void shouldCorrectDeleteAuthorById() {
+        long id = 2L;
+        authorRepositoryJpa.deleteById(id);
+        assertThatCode(() -> em.find(Author.class, id)).isNull();
     }
 }

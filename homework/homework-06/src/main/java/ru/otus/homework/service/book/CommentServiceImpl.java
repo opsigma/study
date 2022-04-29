@@ -22,6 +22,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Comment> getAllByBook(Long bookId) {
+        return commentRepositoryJpa.getAllByBook(Book.builder().id(bookId).build());
+    }
+
+    @Override
     @Transactional
     public Comment create(Long bookId, String comment) {
         Comment c = Comment.builder()

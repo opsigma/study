@@ -32,7 +32,7 @@ public class CommentRepositoryJpa implements CommentRepository {
     public List<Comment> getAllByBook(Book book) {
         TypedQuery<Comment> query = em.createQuery("select c " +
                         "from Comment c " +
-                        "where c.book=:book "
+                        "where c.book = :book "
                 , Comment.class);
         query.setParameter("book", book);
         return query.getResultList();
@@ -52,13 +52,14 @@ public class CommentRepositoryJpa implements CommentRepository {
     @Override
     @Transactional(readOnly = true)
     public Comment getById(Long id) {
-        return null;
+        return em.find(Comment.class, id);
     }
 
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-
+        Comment comment = em.find(Comment.class, id);
+        em.remove(comment);
     }
 }

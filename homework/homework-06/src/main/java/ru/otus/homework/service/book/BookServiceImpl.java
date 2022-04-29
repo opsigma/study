@@ -23,6 +23,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Book> getAllByName(String name) {
+        return bookRepositoryJpa.getAllByName(name);
+    }
+
+    @Override
     @Transactional
     public Book create(String name, Long authorId, Long genreId) {
         Book book = Book.builder().name(name)

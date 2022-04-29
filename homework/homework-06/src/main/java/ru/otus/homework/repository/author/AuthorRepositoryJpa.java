@@ -26,12 +26,14 @@ public class AuthorRepositoryJpa implements AuthorRepository {
         return query.getResultList();
     }
 
-//    @Override
-//    @Transactional
-//    public Author save(Author author) {
-//        return null;
-//    }
-
+    @Override
+    @Transactional(readOnly = true)
+    public List<Author> getByName(String name) {
+        TypedQuery<Author> query = em.createQuery("select a from Author a " +
+                "where a.name = :name ", Author.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
 
     @Override
     @Transactional
@@ -47,12 +49,13 @@ public class AuthorRepositoryJpa implements AuthorRepository {
     @Override
     @Transactional(readOnly = true)
     public Author getById(long id) {
-        return null;
+        return em.find(Author.class, id);
     }
 
     @Override
     @Transactional
     public void deleteById(long id) {
-
+        Author author = em.find(Author.class, id);
+        em.remove(author);
     }
 }

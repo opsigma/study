@@ -12,6 +12,7 @@ import ru.otus.homework.domain.genre.Genre;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DataJpaTest
 @DisplayName("Репозиторий для работы с жанрами должен ")
@@ -42,22 +43,37 @@ class GenreRepositoryJpaTest {
     }
 
     @Test
+    @DisplayName("возвращать все жанры из БД по имени")
+    void shouldReturnAllGenresByName() {
+        List<Genre> expectedGenres = List.of(existingGenre1);
+        List<Genre> actualGenres = genreRepository.getAllByName(existingGenre1.getName());
+        assertThat(actualGenres).usingRecursiveComparison().isEqualTo(expectedGenres);
+    }
+
+    @Test
     @DisplayName("записывать новый жанр в БД")
     void createNewGenre() {
-
+        Genre actualGenre = genreRepository.save(Genre.builder().name("new Genre").build());
+        Genre expectedGenre = Genre.builder().id(3L).name("new Genre").build();
+        assertThat(actualGenre).isEqualTo(expectedGenre);
     }
 
 
     @Test
     @DisplayName("обновлять жанр в БД, если он там существует")
     void updateExistingGenre() {
-
+        existingGenre1.setName("new Genre");
+        Genre expectedGenre = genreRepository.save(existingGenre1);
+        Genre actualGenre =  em.find(Genre.class, existingGenre1.getId());
+        assertThat(actualGenre).isEqualTo(expectedGenre);
     }
 
     @Test
     @DisplayName("удалять по ИД жанр из БД, если он там существует")
     void shouldCorrectDeleteGenreById() {
-
+        long id = 2L;
+        genreRepository.deleteById(id);
+        assertThatCode(() -> em.find(Genre.class, id)).isNull();
     }
 
 }

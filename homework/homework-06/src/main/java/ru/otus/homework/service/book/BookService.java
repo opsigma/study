@@ -8,6 +8,8 @@ public interface BookService {
 
     List<Book> getAll();
 
+    List<Book> getAllByName(String name);
+
     Book create(String name, Long authorId, Long genreId);
 
     Book read(Long id);

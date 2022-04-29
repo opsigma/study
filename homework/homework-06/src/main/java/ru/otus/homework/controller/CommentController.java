@@ -20,6 +20,11 @@ public class CommentController {
         return commentService.getAll();
     }
 
+    @ShellMethod(value = "Get all comment by book command", key = {"cab", "commentAllByBook"})
+    public List<Comment> getAllByBook(@ShellOption Long bookId) {
+        return commentService.getAllByBook(bookId);
+    }
+
     @ShellMethod(value = "Create comment command", key = {"cc", "commentCreate"})
     public Comment create(@ShellOption Long bookId, @ShellOption String comment) {
         return commentService.create(bookId, comment);

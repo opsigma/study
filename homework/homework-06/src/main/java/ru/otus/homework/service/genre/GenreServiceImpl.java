@@ -21,6 +21,12 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Genre> getAllByName(String name) {
+        return genreRepository.getAllByName(name);
+    }
+
+    @Override
     @Transactional
     public Genre create(String name) {
         Genre genre = Genre.builder().name(name).build();

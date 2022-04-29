@@ -21,6 +21,12 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Author> getByName(String name) {
+        return authorRepository.getByName(name);
+    }
+
+    @Override
     @Transactional
     public Author create(String name) {
         return authorRepository.save(Author.builder().name(name).build());

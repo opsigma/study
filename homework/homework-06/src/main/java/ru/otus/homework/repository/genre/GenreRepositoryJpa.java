@@ -26,6 +26,15 @@ public class GenreRepositoryJpa implements GenreRepository {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Genre> getAllByName(String name) {
+        TypedQuery<Genre> query = em.createQuery("select g from Genre g " +
+                "where g.name = :name ", Genre.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+
+    @Override
     @Transactional
     public Genre save(Genre genre) {
         if (Objects.isNull(genre.getId())) {
@@ -39,12 +48,13 @@ public class GenreRepositoryJpa implements GenreRepository {
     @Override
     @Transactional(readOnly = true)
     public Genre getById(Long id) {
-        return null;
+        return em.find(Genre.class, id);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-
+        Genre genre = em.find(Genre.class, id);
+        em.remove(genre);
     }
 }

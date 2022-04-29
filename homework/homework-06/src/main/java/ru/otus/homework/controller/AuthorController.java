@@ -20,6 +20,11 @@ public class AuthorController {
         return authorService.getAll();
     }
 
+    @ShellMethod(value = "Get all author by name command", key = {"aan", "authorAllByName"})
+    public List<Author> getAllByName(@ShellOption String name) {
+        return authorService.getByName(name);
+    }
+
     @ShellMethod(value = "Create author command", key = {"ac", "authorCreate"})
     public Author create(@ShellOption String name) {
         return authorService.create(name);

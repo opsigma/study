@@ -15,6 +15,7 @@ import ru.otus.homework.domain.genre.Genre;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DataJpaTest
 @DisplayName("Репозиторий для работы с комментариями должен ")
@@ -71,5 +72,31 @@ class CommentRepositoryJpaTest {
         List<Comment> expectedComments = List.of(existingComment1, existingComment2, existingComment3);
         List<Comment> actualComments = commentRepositoryJpa.getAllByBook(existingBook1);
         assertThat(actualComments).isEqualTo(expectedComments);
+    }
+
+    @Test
+    @DisplayName("записывать новый комментарий в БД")
+    void createNewComment() {
+        Comment actualComment = commentRepositoryJpa.save(Comment.builder().book(existingBook1).comment("new Comment").build());
+        Comment expectedComment = Comment.builder().id(5L).book(existingBook1).comment("new Comment").build();
+        assertThat(actualComment).isEqualTo(expectedComment);
+    }
+
+
+    @Test
+    @DisplayName("обновлять комментарий в БД, если он там существует")
+    void updateExistingComment() {
+        existingComment1.setComment("new text");
+        Comment expectedComment = commentRepositoryJpa.save(existingComment1);
+        Comment actualComment =  em.find(Comment.class, existingComment1.getId());
+        assertThat(actualComment).isEqualTo(expectedComment);
+    }
+
+    @Test
+    @DisplayName("удалять по ИД комментарий из БД, если он там существует")
+    void shouldCorrectDeleteCommentById() {
+        long id = 2L;
+        commentRepositoryJpa.deleteById(id);
+        assertThatCode(() -> em.find(Comment.class, id)).isNull();
     }
 }

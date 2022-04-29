@@ -21,6 +21,11 @@ public class GenreController {
         return genreService.getAll();
     }
 
+    @ShellMethod(value = "Get all genre by name command", key = {"gan", "genreAllByName"})
+    public List<Genre> getAllByName(@ShellOption String name) {
+        return genreService.getAllByName(name);
+    }
+
     @ShellMethod(value = "Create genre command", key = {"gc", "genreCreate"})
     public Genre create(@ShellOption String name) {
         return genreService.create(name);

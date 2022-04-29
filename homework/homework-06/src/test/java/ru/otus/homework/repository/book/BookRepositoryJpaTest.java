@@ -15,6 +15,7 @@ import ru.otus.homework.domain.genre.Genre;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DataJpaTest
 @DisplayName("Репозиторий для работы с книгами должен ")
@@ -60,5 +61,26 @@ class BookRepositoryJpaTest {
         List<Book> expectedBooks = List.of(existingBook1, existingBook2);
         List<Book> actualBooks = bookRepositoryJpa.getAll();
         assertThat(actualBooks).usingRecursiveComparison().isEqualTo(expectedBooks);
+    }
+
+    @Test
+    @DisplayName("записывать новую книгу в БД")
+    void createNewBook() {
+
+    }
+
+
+    @Test
+    @DisplayName("обновлять книгу в БД, если она там существует")
+    void updateExistingBook() {
+
+    }
+
+    @Test
+    @DisplayName("удалять по ИД книгу из БД, если она там существует")
+    void shouldCorrectDeleteAuthorById() {
+        long id = 2L;
+        bookRepositoryJpa.deleteById(id);
+        assertThatCode(() -> em.find(Book.class, id)).isNull();
     }
 }
