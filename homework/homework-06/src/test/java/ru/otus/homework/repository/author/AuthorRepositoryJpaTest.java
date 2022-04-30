@@ -64,7 +64,7 @@ class AuthorRepositoryJpaTest {
     void updateExistingAuthor() {
         existingAuthor1.setName("new name");
         Author expectedAuthor = authorRepositoryJpa.save(existingAuthor1);
-        Author actualAuthor =  em.find(Author.class, existingAuthor1.getId());
+        Author actualAuthor = em.find(Author.class, existingAuthor1.getId());
         assertThat(actualAuthor).isEqualTo(expectedAuthor);
     }
 

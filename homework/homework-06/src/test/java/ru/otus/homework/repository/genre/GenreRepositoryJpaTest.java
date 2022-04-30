@@ -64,7 +64,7 @@ class GenreRepositoryJpaTest {
     void updateExistingGenre() {
         existingGenre1.setName("new Genre");
         Genre expectedGenre = genreRepository.save(existingGenre1);
-        Genre actualGenre =  em.find(Genre.class, existingGenre1.getId());
+        Genre actualGenre = em.find(Genre.class, existingGenre1.getId());
         assertThat(actualGenre).isEqualTo(expectedGenre);
     }
 

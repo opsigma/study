@@ -2,7 +2,6 @@ package ru.otus.homework.repository.genre;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.genre.Genre;
 
 import javax.persistence.EntityManager;
@@ -19,14 +18,12 @@ public class GenreRepositoryJpa implements GenreRepository {
     private final EntityManager em;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Genre> getAll() {
         TypedQuery<Genre> query = em.createQuery("select g from Genre g", Genre.class);
         return query.getResultList();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Genre> getAllByName(String name) {
         TypedQuery<Genre> query = em.createQuery("select g from Genre g " +
                 "where g.name = :name ", Genre.class);
@@ -35,7 +32,6 @@ public class GenreRepositoryJpa implements GenreRepository {
     }
 
     @Override
-    @Transactional
     public Genre save(Genre genre) {
         if (Objects.isNull(genre.getId())) {
             em.persist(genre);
@@ -46,13 +42,11 @@ public class GenreRepositoryJpa implements GenreRepository {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Genre getById(Long id) {
         return em.find(Genre.class, id);
     }
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         Genre genre = em.find(Genre.class, id);
         em.remove(genre);

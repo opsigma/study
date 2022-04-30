@@ -3,7 +3,6 @@ package ru.otus.homework.repository.author;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.author.Author;
 
 import javax.persistence.EntityManager;
@@ -20,14 +19,12 @@ public class AuthorRepositoryJpa implements AuthorRepository {
     private final EntityManager em;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Author> getAll() {
         TypedQuery<Author> query = em.createQuery("select a from Author a", Author.class);
         return query.getResultList();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Author> getByName(String name) {
         TypedQuery<Author> query = em.createQuery("select a from Author a " +
                 "where a.name = :name ", Author.class);
@@ -36,7 +33,6 @@ public class AuthorRepositoryJpa implements AuthorRepository {
     }
 
     @Override
-    @Transactional
     public Author save(@NonNull Author author) {
         if (Objects.isNull(author.getId())) {
             em.persist(author);
@@ -47,13 +43,11 @@ public class AuthorRepositoryJpa implements AuthorRepository {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Author getById(long id) {
         return em.find(Author.class, id);
     }
 
     @Override
-    @Transactional
     public void deleteById(long id) {
         Author author = em.find(Author.class, id);
         em.remove(author);

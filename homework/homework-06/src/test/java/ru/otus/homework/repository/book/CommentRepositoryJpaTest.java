@@ -88,7 +88,7 @@ class CommentRepositoryJpaTest {
     void updateExistingComment() {
         existingComment1.setComment("new text");
         Comment expectedComment = commentRepositoryJpa.save(existingComment1);
-        Comment actualComment =  em.find(Comment.class, existingComment1.getId());
+        Comment actualComment = em.find(Comment.class, existingComment1.getId());
         assertThat(actualComment).isEqualTo(expectedComment);
     }
 

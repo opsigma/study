@@ -3,7 +3,6 @@ package ru.otus.homework.repository.book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.book.Book;
 import ru.otus.homework.domain.book.Comment;
 
@@ -21,14 +20,12 @@ public class CommentRepositoryJpa implements CommentRepository {
     private final EntityManager em;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Comment> getAll() {
         TypedQuery<Comment> query = em.createQuery("select c from Comment c", Comment.class);
         return query.getResultList();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Comment> getAllByBook(Book book) {
         TypedQuery<Comment> query = em.createQuery("select c " +
                         "from Comment c " +
@@ -39,7 +36,6 @@ public class CommentRepositoryJpa implements CommentRepository {
     }
 
     @Override
-    @Transactional
     public Comment save(@NonNull Comment comment) {
         if (Objects.isNull(comment.getId())) {
             em.persist(comment);
@@ -50,14 +46,12 @@ public class CommentRepositoryJpa implements CommentRepository {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Comment getById(Long id) {
         return em.find(Comment.class, id);
     }
 
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         Comment comment = em.find(Comment.class, id);
         em.remove(comment);

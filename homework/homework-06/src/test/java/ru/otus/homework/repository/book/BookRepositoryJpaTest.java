@@ -31,11 +31,14 @@ class BookRepositoryJpaTest {
     private Book existingBook1;
     private Book existingBook2;
 
+    private Author author1;
+    private Genre genre1;
+
     @BeforeEach
     void setUp() {
-        Author author1 = Author.builder().id(1L).name("author1").build();
+        author1 = Author.builder().id(1L).name("author1").build();
         Author author2 = Author.builder().id(2L).name("author2").build();
-        Genre genre1 = Genre.builder().id(1L).name("genre1").build();
+        genre1 = Genre.builder().id(1L).name("genre1").build();
 
         existingBook1 = Book.builder().id(1L).name("book1")
                 .author(author1)
@@ -64,16 +67,29 @@ class BookRepositoryJpaTest {
     }
 
     @Test
+    @DisplayName("возвращать все книги из БД по имени")
+    void shouldReturnAllBooksByName() {
+        List<Book> expectedBooks = List.of(existingBook1);
+        List<Book> actualBooks = bookRepositoryJpa.getAllByName(existingBook1.getName());
+        assertThat(actualBooks).usingRecursiveComparison().isEqualTo(expectedBooks);
+    }
+
+    @Test
     @DisplayName("записывать новую книгу в БД")
     void createNewBook() {
-
+        Book actualBook = bookRepositoryJpa.save(Book.builder().name("new Book").author(author1).genre(genre1).build());
+        Book expectedBook = Book.builder().id(3L).name("new Book").author(author1).genre(genre1).build();
+        assertThat(actualBook).isEqualTo(expectedBook);
     }
 
 
     @Test
     @DisplayName("обновлять книгу в БД, если она там существует")
     void updateExistingBook() {
-
+        existingBook1.setName("update name");
+        Book actualBook = bookRepositoryJpa.save(existingBook1);
+        Book expectedBook = existingBook1;
+        assertThat(actualBook).isEqualTo(expectedBook);
     }
 
     @Test

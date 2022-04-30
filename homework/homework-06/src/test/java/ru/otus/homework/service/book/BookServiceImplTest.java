@@ -12,7 +12,6 @@ import ru.otus.homework.domain.author.Author;
 import ru.otus.homework.domain.book.Book;
 import ru.otus.homework.domain.genre.Genre;
 import ru.otus.homework.repository.book.BookRepositoryJpa;
-import ru.otus.homework.service.locale.LocaleService;
 
 import java.util.List;
 
@@ -27,9 +26,6 @@ class BookServiceImplTest {
 
     @MockBean
     private BookRepositoryJpa bookRepositoryJpa;
-
-    @MockBean
-    private LocaleService localeService;
 
     private Author existingAuthor1;
     private Author existingAuthor2;

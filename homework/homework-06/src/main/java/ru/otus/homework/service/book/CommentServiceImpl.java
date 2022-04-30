@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework.domain.book.Book;
 import ru.otus.homework.domain.book.Comment;
-import ru.otus.homework.repository.book.CommentRepositoryJpa;
+import ru.otus.homework.repository.book.CommentRepository;
 
 import java.util.List;
 
@@ -13,7 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
 
-    private final CommentRepositoryJpa commentRepositoryJpa;
+    private final CommentRepository commentRepositoryJpa;
+    private final BookService bookService;
 
     @Override
     @Transactional(readOnly = true)
@@ -30,8 +31,9 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public Comment create(Long bookId, String comment) {
+        Book book = bookService.read(bookId);
         Comment c = Comment.builder()
-                .book(Book.builder().id(bookId).build())
+                .book(book)
                 .comment(comment)
                 .build();
         return commentRepositoryJpa.save(c);
@@ -46,9 +48,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public void update(Long id, Long bookId, String comment) {
+        Book book = bookService.read(bookId);
         Comment c = Comment.builder()
                 .id(id)
-                .book(Book.builder().id(bookId).build())
+                .book(book)
                 .comment(comment)
                 .build();
         commentRepositoryJpa.save(c);
