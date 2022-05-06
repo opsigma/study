@@ -14,7 +14,5 @@ public interface BookRepository {
 
     Book getById(Long id);
 
-    void update(Long id, String name, Long authorId, Long genreId);
-
     void deleteById(Long id);
 }

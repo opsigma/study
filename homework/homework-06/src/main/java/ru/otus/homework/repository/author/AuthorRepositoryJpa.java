@@ -2,7 +2,7 @@ package ru.otus.homework.repository.author;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.author.Author;
 
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Objects;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class AuthorRepositoryJpa implements AuthorRepository {
 

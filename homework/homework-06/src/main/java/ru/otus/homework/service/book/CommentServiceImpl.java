@@ -7,7 +7,9 @@ import ru.otus.homework.domain.book.Book;
 import ru.otus.homework.domain.book.Comment;
 import ru.otus.homework.repository.book.CommentRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +27,8 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional(readOnly = true)
     public List<Comment> getAllByBook(Long bookId) {
-        return commentRepositoryJpa.getAllByBook(Book.builder().id(bookId).build());
+        Book book = bookService.read(bookId);
+        return Optional.ofNullable(book).map(Book::getComments).orElse(new ArrayList<>());
     }
 
     @Override

@@ -2,7 +2,7 @@ package ru.otus.homework.repository.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.book.Book;
 
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Objects;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class BookRepositoryJpa implements BookRepository {
 
@@ -45,11 +45,6 @@ public class BookRepositoryJpa implements BookRepository {
     @Override
     public Book getById(Long id) {
         return em.find(Book.class, id);
-    }
-
-    @Override
-    public void update(Long id, String name, Long authorId, Long genreId) {
-
     }
 
     @Override

@@ -54,6 +54,6 @@ public class Book {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @BatchSize(size = 15)
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Comment> comments;
 }

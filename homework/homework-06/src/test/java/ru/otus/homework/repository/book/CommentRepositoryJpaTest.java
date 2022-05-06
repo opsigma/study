@@ -66,13 +66,6 @@ class CommentRepositoryJpaTest {
         assertThat(actualComments).isEqualTo(expectedComments);
     }
 
-    @DisplayName("возвращать все комментарии из БД по книге")
-    @Test
-    void shouldReturnAllCommentsByBook() {
-        List<Comment> expectedComments = List.of(existingComment1, existingComment2, existingComment3);
-        List<Comment> actualComments = commentRepositoryJpa.getAllByBook(existingBook1);
-        assertThat(actualComments).isEqualTo(expectedComments);
-    }
 
     @Test
     @DisplayName("записывать новый комментарий в БД")

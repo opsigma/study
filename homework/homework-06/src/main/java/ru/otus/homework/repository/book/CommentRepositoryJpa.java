@@ -2,8 +2,7 @@ package ru.otus.homework.repository.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
-import ru.otus.homework.domain.book.Book;
+import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.book.Comment;
 
 import javax.persistence.EntityManager;
@@ -12,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Objects;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class CommentRepositoryJpa implements CommentRepository {
 
@@ -22,16 +21,6 @@ public class CommentRepositoryJpa implements CommentRepository {
     @Override
     public List<Comment> getAll() {
         TypedQuery<Comment> query = em.createQuery("select c from Comment c", Comment.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public List<Comment> getAllByBook(Book book) {
-        TypedQuery<Comment> query = em.createQuery("select c " +
-                        "from Comment c " +
-                        "where c.book = :book "
-                , Comment.class);
-        query.setParameter("book", book);
         return query.getResultList();
     }
 
