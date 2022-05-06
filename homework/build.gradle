@@ -18,8 +18,12 @@ subprojects {
 
     dependencies {
         compileOnly 'org.projectlombok:lombok:1.18.22'
-        implementation 'ch.qos.logback:logback-classic:1.2.7'
+        implementation 'ch.qos.logback:logback-classic:1.2.11'
         annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        testImplementation 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     test {
