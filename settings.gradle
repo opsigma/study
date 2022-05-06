@@ -108,10 +108,10 @@ include 'spring',
                 'spring:spring-15-mvc:spring-mvc-solution-2',
                 'spring:spring-15-mvc:spring-mvc-solution-3',
 
-            'homework',
-                'homework:homework-01',
-                'homework:homework-02',
-                'homework:homework-03',
-                'homework:homework-04',
-                'homework:homework-05',
-                'homework:homework-06'
+        'homework',
+            'homework:homework-01',
+            'homework:homework-02',
+            'homework:homework-03',
+            'homework:homework-04',
+            'homework:homework-05',
+            'homework:homework-06'
