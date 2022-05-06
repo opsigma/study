@@ -17,13 +17,11 @@ public class BookServiceImpl implements BookService {
     private final BookRepositoryJpa bookRepositoryJpa;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Book> getAll() {
         return bookRepositoryJpa.getAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Book> getAllByName(String name) {
         return bookRepositoryJpa.getAllByName(name);
     }
@@ -39,7 +37,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Book read(Long id) {
         return bookRepositoryJpa.getById(id);
     }

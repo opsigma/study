@@ -15,13 +15,11 @@ public class GenreServiceImpl implements GenreService {
     private final GenreRepositoryJpa genreRepository;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Genre> getAll() {
         return genreRepository.getAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Genre> getAllByName(String name) {
         return genreRepository.getAllByName(name);
     }
@@ -34,7 +32,6 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Genre read(Long id) {
         return genreRepository.getById(id);
     }

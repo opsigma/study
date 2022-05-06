@@ -19,13 +19,11 @@ public class CommentServiceImpl implements CommentService {
     private final BookService bookService;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Comment> getAll() {
         return commentRepositoryJpa.getAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Comment> getAllByBook(Long bookId) {
         Book book = bookService.read(bookId);
         return Optional.ofNullable(book).map(Book::getComments).orElse(new ArrayList<>());
@@ -43,7 +41,6 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Comment read(Long id) {
         return commentRepositoryJpa.getById(id);
     }

@@ -15,13 +15,11 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepositoryJpa authorRepository;
 
     @Override
-    @Transactional(readOnly = true)
     public List<Author> getAll() {
         return authorRepository.getAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Author> getByName(String name) {
         return authorRepository.getByName(name);
     }
@@ -33,7 +31,6 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Author read(long id) {
         return authorRepository.getById(id);
     }
