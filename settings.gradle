@@ -114,4 +114,5 @@ include 'spring',
             'homework:homework-03',
             'homework:homework-04',
             'homework:homework-05',
-            'homework:homework-06'
+            'homework:homework-06',
+            'homework:homework-07'

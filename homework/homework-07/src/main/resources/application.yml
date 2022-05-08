@@ -1,0 +1,30 @@
+app:
+  title: Ebook Library JPA
+  version: 0.1
+  dao:
+    localeProvider:
+      lang: en
+spring:
+  datasource:
+    url: jdbc:h2:mem:home6db
+  messages:
+    basename: i18n/messages
+  sql:
+    init:
+      mode: always
+      data-locations: data.sql
+      schema-locations: schema.sql
+  shell:
+    interactive:
+      enabled: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+
+    show-sql: true
+
+logging:
+  level:
+    ROOT: ERROR
+#debug: true
