@@ -9,6 +9,7 @@ import ru.otus.springdata.repository.EmailRepository;
 import ru.otus.springdata.repository.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootApplication
@@ -19,12 +20,6 @@ public class Main {
         PersonRepository personRepository = context.getBean(PersonRepository.class);
         EmailRepository emailRepository = context.getBean(EmailRepository.class);
 
-        personRepository.save(new Person("Александр Сергеевич Пушкин"));
-        personRepository.save(new Person("Михаил Юрьевич Лермонтов"));
-        personRepository.save(new Person("Михаил Сергеевич Горбачев"));
-        List<Person> personByNameList = personRepository.findByName("Михаил Юрьевич Лермонтов");
-        System.out.printf("personByNameList: %s%n", personByNameList);
-
         var email1 = new Email("1@email.com");
         var email2 = new Email("2@email.com");
         var email3 = new Email("3@email.com");
@@ -32,6 +27,17 @@ public class Main {
         emailRepository.save(email1);
         emailRepository.save(email2);
         emailRepository.save(email3);
+
+        personRepository.save(new Person("Александр Сергеевич Пушкин", email1));
+        personRepository.save(new Person("Михаил Юрьевич Лермонтов", email2));
+        personRepository.save(new Person("Михаил Сергеевич Горбачев", email3));
+        List<Person> personByNameList = personRepository.findByName("Михаил Юрьевич Лермонтов");
+        System.out.printf("personByNameList: %s%n", personByNameList);
+
+        Optional<Person> personByEmail = personRepository.findByEmailAddress(email3.getAddress());
+        System.out.printf("personByEmail: %s%n", personByEmail);
+
+
 
         List<Email> emailList = emailRepository.findAll();
         System.out.printf("emailList: %s%n", emailList);
